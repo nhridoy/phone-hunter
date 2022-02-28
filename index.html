@@ -11,19 +11,19 @@
     <main class="container mx-auto">
       <!-- Search Area Section -->
       <section
-        class="search-area h-screen-1-2 flex items-center justify-center"
+        class="search-area h-56 md:h-screen-1-2 flex items-center justify-center"
       >
-        <div class="search-area__inner">
+        <div class="search-area__inner flex">
           <input
             id="inputText"
-            class="focus:outline-none p-5 text-2xl rounded-lg rounded-r-none shadow-2xl"
+            class="focus:outline-none p-5 md:text-2xl rounded-lg rounded-r-none shadow-2xl"
             type="text"
             name="search"
             placeholder="Search for phones"
           />
           <button
             id="inputBtn"
-            class="bg-gray-500 p-5 text-2xl font-bold rounded-lg rounded-l-none text-white"
+            class="bg-gray-500 p-5 md:text-2xl font-bold rounded-lg rounded-l-none text-white"
             type="submit"
           >
             Search
@@ -34,10 +34,11 @@
         Loading......
       </div>
       <!-- Display Phone List Section -->
-      <section id="list" class="grid gap-4 grid-cols-4"></section>
+      <section id="list" class="grid gap-4 md:grid-cols-4"></section>
     </main>
+    <!-- Tailwind Helper Classes -->
     <div
-      class="max-w-sm rounded shadow-lg flex flex-col items-center grid-cols-2 grid-cols-3 col-span-1 col-span-2 w-1/2 px-6 py-4 font-bold text-xl mb-2 text-gray-700 text-base px-6 pt-4 pb-2 gap-3 bg-blue-500 rounded p-3 font-semibold text-white mr-2 mb-2 hidden"
+      class="max-w-sm rounded shadow-lg grid-cols-1 flex flex-col items-center grid-cols-2 md:grid-cols-3 col-span-1 col-span-2 w-1/2 px-6 py-4 font-bold text-xl mb-2 text-gray-700 text-base px-6 pt-4 pb-2 gap-3 bg-blue-500 rounded p-3 font-semibold text-white mr-2 mb-2 hidden"
     ></div>
 
     <!-- Modal Section -->

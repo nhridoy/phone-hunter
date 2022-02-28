@@ -535,6 +535,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   display: none;
 }
 
+.h-56 {
+  height: 14rem;
+}
+
 .w-1\/2 {
   width: 50%;
 }
@@ -543,16 +547,16 @@ Ensure the default browser behavior of the `hidden` attribute.
   max-width: 24rem;
 }
 
-.grid-cols-4 {
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-}
-
 .grid-cols-2 {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .grid-cols-3 {
   grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.grid-cols-1 {
+  grid-template-columns: repeat(1, minmax(0, 1fr));
 }
 
 .flex-col {
@@ -706,7 +710,7 @@ Ensure the default browser behavior of the `hidden` attribute.
 .modal__container {
   background-color: #fff;
   padding: 30px;
-  max-width: 60vw;
+  max-width: 95vw;
   max-height: 100vh;
   border-radius: 4px;
   overflow-y: auto;
@@ -900,4 +904,19 @@ Ensure the default browser behavior of the `hidden` attribute.
 .focus\:outline-none:focus {
   outline: 2px solid transparent;
   outline-offset: 2px;
+}
+
+@media (min-width: 768px) {
+  .md\:grid-cols-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .md\:grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .md\:text-2xl {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
 }
