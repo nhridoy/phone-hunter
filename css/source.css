@@ -5,3 +5,6 @@
 .h-screen-1-2 {
   height: 50vh;
 }
+.cursor-pointer {
+  cursor: pointer;
+}
