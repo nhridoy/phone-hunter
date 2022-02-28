@@ -70,7 +70,7 @@ const loadDetails = (slug) => {
 
 // Displaying Modal
 const displayDetails = (data) => {
-  MicroModal.init({
+  MicroModal.show("modal-1", {
     awaitCloseAnimation: true,
   });
   document.getElementById("modal-1-title").innerText = data.name;
