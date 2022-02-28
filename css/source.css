@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.h-screen-1-2 {
+  height: 50vh;
+}
