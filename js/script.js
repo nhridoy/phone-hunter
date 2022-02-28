@@ -21,7 +21,6 @@ inputBtn.addEventListener("click", () => {
 
 // Displaying Data in a List
 const displayPhones = (phone) => {
-  console.log(phone.length);
   phones.innerHTML = "";
   if (phone.length <= 0) {
     phones.innerHTML = `<div class="text-center text-2xl font-bold">No Results Found</div>`;
@@ -54,11 +53,18 @@ const displayPhones = (phone) => {
       }
     }
     if (phone.length > 20) {
-      phones.innerHTML += `<div class="flex flex-col gap-3 text-2xl font-bold">Showing 20 of ${phone.length} Results
-      <span class="bg-blue-500 text-white p-3 rounded cursor-pointer">Load More</span>
-      </div>`;
+      phones.innerHTML += `<div class="flex flex-col gap-3 text-2xl font-bold">Showing 20 of ${phone.length} Results</div>`;
     }
   }
 
   toggleLoader();
+
+  //   $("#demo").pagination({
+  //     dataSource: [phone],
+  //     callback: function (data, pagination) {
+  //       // template method of yourself
+  //       var html = template(data);
+  //       dataContainer.html(html);
+  //     },
+  //   });
 };
