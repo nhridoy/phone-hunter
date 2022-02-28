@@ -8,11 +8,12 @@
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
-    <main class="container mx-auto">
+    <main class="container mx-auto font-sans">
       <!-- Search Area Section -->
       <section
-        class="search-area h-56 md:h-screen-1-2 flex items-center justify-center"
+        class="search-area h-56 md:h-screen-1-2 flex flex-col gap-3 items-center justify-center"
       >
+        <p class="md:text-3xl">Phone World</p>
         <div class="search-area__inner flex">
           <input
             id="inputText"
@@ -23,7 +24,7 @@
           />
           <button
             id="inputBtn"
-            class="bg-gray-500 p-5 md:text-2xl font-bold rounded-lg rounded-l-none text-white"
+            class="bg-gray-500 p-5 md:text-2xl font-semibold rounded-lg rounded-l-none text-white"
             type="submit"
           >
             Search
