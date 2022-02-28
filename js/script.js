@@ -2,6 +2,8 @@ const inputText = document.getElementById("inputText");
 const inputBtn = document.getElementById("inputBtn");
 const loader = document.getElementById("loader");
 const phones = document.getElementById("list");
+const more = document.getElementById("more");
+let search;
 
 // Toggle Loader
 const toggleLoader = () => {
@@ -10,54 +12,96 @@ const toggleLoader = () => {
 
 // Fething Data From API
 inputBtn.addEventListener("click", () => {
+  search = inputText.value;
   toggleLoader();
-  fetch(
-    `https://openapi.programming-hero.com/api/phones?search=${inputText.value}`
-  )
+  fetch(`https://openapi.programming-hero.com/api/phones?search=${search}`)
     .then((res) => res.json())
-    .then((data) => displayPhones(data.data));
+    .then((data) => displayPhones(data.data, false));
   inputText.value = "";
 });
 
 // Displaying Data in a List
-const displayPhones = (phone) => {
+const displayPhones = (phone, isMore) => {
   phones.innerHTML = "";
-  if (phone.length <= 0) {
-    phones.innerHTML = `<div class="text-center text-2xl font-bold">No Results Found</div>`;
-  } else {
+  more.innerHTML = "";
+  if (isMore) {
     for (let i = 0; i < phone.length; i++) {
-      if (i == 20) {
-        break;
-      } else {
-        phones.innerHTML += `
-        <div
-        class="max-w-sm rounded shadow-lg flex flex-col items-center"
-      >
-        <img
-          class="w-1/2"
-          src="${phone[i].image}"
-        />
-        <div class="px-6 py-4">
-          <div class="font-bold text-xl mb-2">${phone[i].brand} ${phone[i].phone_name}</div>
-          <p class="text-gray-700 text-base">${phone[i].brand}</p>
-        </div>
-        <div class="px-6 pt-4 pb-2">
-          <button
-          id="detailsBtn" data-micromodal-trigger="modal-1" onclick="loadDetails('${phone[i].slug}')"
-            class="bg-blue-500 rounded p-3 font-semibold text-white mr-2 mb-2"
+      phones.innerHTML += `
+            <div
+            class="max-w-sm rounded shadow-lg flex flex-col items-center"
           >
-            Details
-          </button>
-        </div>
-      </div>
-        `;
-      }
+            <img
+              class="w-1/2"
+              src="${phone[i].image}"
+            />
+            <div class="px-6 py-4">
+              <div class="font-bold text-xl mb-2">${phone[i].brand} ${phone[i].phone_name}</div>
+              <p class="text-gray-700 text-base">${phone[i].brand}</p>
+            </div>
+            <div class="px-6 pt-4 pb-2">
+              <button
+              id="detailsBtn" data-micromodal-trigger="modal-1" onclick="loadDetails('${phone[i].slug}')"
+                class="bg-blue-500 rounded p-3 font-semibold text-white mr-2 mb-2"
+              >
+                Details
+              </button>
+            </div>
+          </div>
+            `;
     }
-    if (phone.length > 20) {
-      phones.innerHTML += `<div class="flex flex-col gap-3 text-2xl font-bold">Showing 20 of ${phone.length} Results</div>`;
+    more.innerHTML += `<div class="flex flex-col items-center m-6 gap-3">
+        <p class=" text-2xl font-bold">Showing ${phone.length} of ${phone.length} Results</p>
+        </div>`;
+  } else {
+    if (phone.length <= 0) {
+      phones.innerHTML = `<div class="text-center text-2xl font-bold">No Results Found</div>`;
+    } else {
+      for (let i = 0; i < phone.length; i++) {
+        if (i == 20) {
+          break;
+        } else {
+          phones.innerHTML += `
+            <div
+            class="max-w-sm rounded shadow-lg flex flex-col items-center"
+          >
+            <img
+              class="w-1/2"
+              src="${phone[i].image}"
+            />
+            <div class="px-6 py-4">
+              <div class="font-bold text-xl mb-2">${phone[i].brand} ${phone[i].phone_name}</div>
+              <p class="text-gray-700 text-base">${phone[i].brand}</p>
+            </div>
+            <div class="px-6 pt-4 pb-2">
+              <button
+              id="detailsBtn" data-micromodal-trigger="modal-1" onclick="loadDetails('${phone[i].slug}')"
+                class="bg-blue-500 rounded p-3 font-semibold text-white mr-2 mb-2"
+              >
+                Details
+              </button>
+            </div>
+          </div>
+            `;
+        }
+      }
+      more.innerHTML += `<div class="flex flex-col items-center m-6 gap-3">
+        <p class=" text-2xl font-bold">Showing 20 of ${phone.length} Results</p>
+        <button class="bg-blue-500 rounded p-3 font-semibold text-white mr-2 mb-2" onclick="loadMore()">
+          Load More
+          </button>
+        </div>`;
     }
   }
+
   toggleLoader();
+};
+
+// Load More
+const loadMore = () => {
+  toggleLoader();
+  fetch(`https://openapi.programming-hero.com/api/phones?search=${search}`)
+    .then((res) => res.json())
+    .then((data) => displayPhones(data.data, true));
 };
 
 // Load Details
