@@ -18,11 +18,11 @@ inputBtn.addEventListener("click", () => {
     .then((res) => res.json())
     .then((data) => displayPhones(data.data, false));
   inputText.value = "";
+  phones.innerHTML = "";
 });
 
 // Displaying Data in a List
 const displayPhones = (phone, isMore) => {
-  phones.innerHTML = "";
   more.innerHTML = "";
   if (isMore) {
     for (let i = 0; i < phone.length; i++) {
@@ -54,7 +54,7 @@ const displayPhones = (phone, isMore) => {
         </div>`;
   } else {
     if (phone.length <= 0) {
-      phones.innerHTML = `<div class="text-center text-2xl font-bold">No Results Found</div>`;
+      more.innerHTML = `<div class="text-center text-2xl font-bold">No Results Found</div>`;
     } else {
       for (let i = 0; i < phone.length; i++) {
         if (i == 20) {
@@ -98,6 +98,8 @@ const displayPhones = (phone, isMore) => {
 
 // Load More
 const loadMore = () => {
+  phones.innerHTML = "";
+  more.innerHTML = "";
   toggleLoader();
   fetch(`https://openapi.programming-hero.com/api/phones?search=${search}`)
     .then((res) => res.json())
