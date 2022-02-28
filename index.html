@@ -34,13 +34,50 @@
         Loading......
       </div>
       <!-- Display Phone List Section -->
-      <section id="list" class="grid gap-4 grid-cols-4">
-        <!-- Card -->
-      </section>
+      <section id="list" class="grid gap-4 grid-cols-4"></section>
     </main>
     <div
-      class="max-w-sm rounded shadow-lg flex flex-col items-center w-1/2 px-6 py-4 font-bold text-xl mb-2 text-gray-700 text-base px-6 pt-4 pb-2 gap-3 bg-blue-500 rounded p-3 font-semibold text-white mr-2 mb-2 hidden"
+      class="max-w-sm rounded shadow-lg flex flex-col items-center grid-cols-2 grid-cols-3 col-span-1 col-span-2 w-1/2 px-6 py-4 font-bold text-xl mb-2 text-gray-700 text-base px-6 pt-4 pb-2 gap-3 bg-blue-500 rounded p-3 font-semibold text-white mr-2 mb-2 hidden"
     ></div>
+
+    <!-- Modal Section -->
+    <div class="modal micromodal-slide" id="modal-1" aria-hidden="true">
+      <div class="modal__overlay" tabindex="-1" data-micromodal-close>
+        <div
+          class="modal__container"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="modal-1-title"
+        >
+          <header class="modal__header">
+            <h2 class="modal__title" id="modal-1-title">Micromodal</h2>
+            <button
+              class="modal__close"
+              aria-label="Close modal"
+              data-micromodal-close
+            ></button>
+          </header>
+          <main class="modal__content" id="modal-1-content">
+            <p>
+              Try hitting the <code>tab</code> key and notice how the focus
+              stays within the modal itself. Also, <code>esc</code> to close
+              modal.
+            </p>
+          </main>
+          <footer class="modal__footer">
+            <button
+              class="modal__btn"
+              data-micromodal-close
+              aria-label="Close this dialog window"
+            >
+              Close
+            </button>
+          </footer>
+        </div>
+      </div>
+    </div>
+    <!-- Modal -->
+    <script src="https://unpkg.com/micromodal/dist/micromodal.min.js"></script>
     <!-- Loading Scripts -->
     <script src="js/script.js"></script>
   </body>
